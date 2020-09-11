@@ -30,7 +30,15 @@ public class ChessMatch {
 
     private void initialSetup(){
         placeNewPiece('e', 8, new Rook(this.board, Color.WHITE));
+        placeNewPiece('f', 8, new Rook(this.board, Color.WHITE));
         placeNewPiece('e', 1, new Rook(this.board, Color.BLACK));
+        placeNewPiece('f', 1, new Rook(this.board, Color.BLACK));
+    }
+
+    public boolean[][] possibleMoves(ChessPosition sourcePosition){
+        Position position = sourcePosition.toPosition();
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves();
     }
 
     public Piece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){
