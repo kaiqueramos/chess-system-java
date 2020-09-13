@@ -22,17 +22,17 @@ public class Pawn extends ChessPiece {
         //Cima
         if (getColor() == Color.WHITE) {
             p.setValues(position.getRow() - 1, position.getColumn());
-            if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { //Posição existe e não tem peças amigas a frente
                 mat[p.getRow()][p.getColumn()] = true;
             }
             p.setValues(position.getRow() - 2, position.getColumn());
             Position p2 = new Position(p.getRow() - 1, p.getColumn());
             if (
-                    getBoard().positionExists(p)
-                            && !getBoard().thereIsAPiece(p)
-                            && getMoveCount() == 0
-                            && getBoard().positionExists(p2)
-                            && !getBoard().thereIsAPiece(p2)
+                    getBoard().positionExists(p) //Posição existe
+                            && !getBoard().thereIsAPiece(p) //Não tem peças amigas a frente
+                            && getMoveCount() == 0 //Contador 0
+                            && getBoard().positionExists(p2) //Posição existe
+                            && !getBoard().thereIsAPiece(p2) //Não tem peças amigas a frente
             ) {
                 mat[p.getRow()][p.getColumn()] = true;
             }
@@ -40,7 +40,6 @@ public class Pawn extends ChessPiece {
             if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
                 mat[p.getRow()][p.getColumn()] = true;
             }
-            p.setValues(position.getRow() - 1, position.getColumn() + 1);
         } else {
             p.setValues(position.getRow() + 1, position.getColumn());
             if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
@@ -61,7 +60,6 @@ public class Pawn extends ChessPiece {
             if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
                 mat[p.getRow()][p.getColumn()] = true;
             }
-            p.setValues(position.getRow() + 1, position.getColumn() + 1);
         }
         return mat;
     }
