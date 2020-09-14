@@ -37,7 +37,11 @@ public class Program {
                 }
                 if(chessMatch.getPromoted() != null){
                     System.out.println("Qual será a promoção? B(Bispo)/N(Cavalo)/R(Torre)/Q(Rainha): ");
-                    String type = sc.nextLine();
+                    String type = sc.nextLine().toUpperCase();
+                    while(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
+                        System.out.println("Valor inválido! Qual será a promoção? B(Bispo)/N(Cavalo)/R(Torre)/Q(Rainha): ");
+                        type = sc.nextLine().toUpperCase();
+                    }
                     chessMatch.replacePromotedPiece(type);
                 }
             }catch(ChessException e){
