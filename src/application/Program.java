@@ -35,6 +35,11 @@ public class Program {
                 if(capturedPiece != null){
                     captured.add(capturedPiece);
                 }
+                if(chessMatch.getPromoted() != null){
+                    System.out.println("Qual será a promoção? B(Bispo)/N(Cavalo)/R(Torre)/Q(Rainha): ");
+                    String type = sc.nextLine();
+                    chessMatch.replacePromotedPiece(type);
+                }
             }catch(ChessException e){
                 System.out.println(e.getMessage());
                 sc.nextLine();
